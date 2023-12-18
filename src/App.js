@@ -1,24 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './NavBar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import IndividualJobPosting from './pages/IndividualJobPosting';
+import AllJobPosting from './pages/AllJobPosting';
+import NotFoundPage from './pages/NotFoundPage';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter> 
+      <div className="App">
+        <NavBar />
+        <div id="page-body">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/alljobs" element={<AllJobPosting />} />
+            <Route path="/individualjob/:jobId" element={<IndividualJobPosting />} />
+            <Route path="*" element={<NotFoundPage />} />
+           
+          
+
+          </Routes>
+
+        
+        </div>
+
+      
+      </div>
+    </BrowserRouter>
+    
   );
 }
 
